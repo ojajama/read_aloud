@@ -1,4 +1,15 @@
-<div>
-  <h1 class="font-bold text-4xl">Texts#show</h1>
-  <p>Find me in app/views/texts/show.html.erb</p>
-</div>
+<h1 class="text-2xl font-bold mb-4">生成された音声</h1>
+
+<% if @text_item.audio_file.attached? %>
+  <audio controls class="mb-4">
+    <source src="<%= url_for(@text_item.audio_file) %>" type="audio/mpeg">
+  </audio>
+
+  <br>
+  <%= link_to "ダウンロード", url_for(@text_item.audio_file), class: "text-blue-600 underline" %>
+<% else %>
+  <p>音声生成に失敗しました。</p>
+<% end %>
+
+<br>
+<%= link_to "戻る", new_text_path, class: "text-blue-600 underline" %>
