@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl">Texts#new</h1>
-  <p>Find me in app/views/texts/new.html.erb</p>
-</div>
+<h1 class="text-2xl font-bold mb-4">テキスト読み上げ</h1>
+
+<%= form_with model: @text_item, url: texts_path, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :text_file, "テキストファイル（.txt）", class: "block font-semibold" %>
+    <%= f.file_field :text_file, class: "mt-1" %>
+  </div>
+
+  <%= f.submit "音声を生成する", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+<% end %>
