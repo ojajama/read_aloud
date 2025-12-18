@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :texts, only: [:new, :create, :show]  
-  root "texts#new"
+  resources :text_items, only: [:new, :create, :show]  
+  root "text_items#new"
 end

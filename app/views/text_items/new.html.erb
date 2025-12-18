@@ -1,0 +1,23 @@
+<%= flash[:alert] %>
+
+<h1 class="text-2xl font-bold mb-4">テキスト読み上げ</h1>
+
+<% if @text_item.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @text_item.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @text_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @text_item, local: true, html: { multipart: true } do |f| %>
+  <div class="mb-3">
+    <%= f.label :text_file, "テキストファイル（.txt）", class: "block font-semibold" %>
+    <%= f.file_field :text_file, class: "mt-1" %>
+  </div>
+
+  <%= f.submit "音声を生成する", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+<% end %>
